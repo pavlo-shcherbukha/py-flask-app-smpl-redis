@@ -103,6 +103,9 @@ Rest API  доступне  за адресою: http://localhost:5000/api
 docker compose up --build smplapp-srvc-redis
 ```
 
+Сервіс стартує локально за адресою: http://localhost:8081
+
+Rest API  доступне  за адресою: http://localhost:8081/api
 
 
 ## Розроблені API
@@ -119,3 +122,52 @@ docker compose up --build smplapp-srvc-redis
 }
 ```
 
+### Отримати всі ключі в БД GET api/key
+
+Повертає перелік всіх ключів в БД redis у вигляді масиву:
+
+- Запит
+
+   без параметрів
+
+- Обов'язкові заголовки http в запиті
+
+```text
+
+    content-type: application/json
+
+```
+
+- Відповідь
+
+```json
+{
+  "list": ["shhkey2", "shkey1", "APICALLS", "book1", "myhash", "jsondata", "get", "test1", "counter", "xcntr", "sh-book","gey"]
+}
+
+```
+
+### Створити новий ключ та значення в БД POST api/key
+
+- Запит
+
+- Обов'язкові заголовки http в запиті
+
+```text
+
+    content-type: application/json
+
+
+```json
+{"keyname": "xkey1", "keyvalue": "xkeyvalue"}
+
+```
+
+- Успішна відповідь
+
+```json
+{
+  "redis_result": true
+}
+
+```
